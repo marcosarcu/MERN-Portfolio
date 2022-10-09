@@ -1,6 +1,6 @@
-var express = require('express');
-let projectsServices = require('../services/projects.Services.js');
-var router = express.Router();
+import express from 'express';
+let router = express.Router();
+import projectsServices from '../services/projects.Services.js';
 
 // router.get('/', function(req, res, next) {
 //   res.send('holaaaa');
@@ -16,6 +16,6 @@ projectsServices.traerProyectos().then(function (projects) {
 });
 
 
-module.exports = router;
+export default router;
 
 

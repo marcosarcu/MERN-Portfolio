@@ -1,4 +1,4 @@
-let MongoClient = require('mongodb').MongoClient;
+import { MongoClient, ObjectId } from 'mongodb'
 const client = new MongoClient("mongodb://127.0.0.1:27017");
 
 async function traerProyectos() {
@@ -12,4 +12,6 @@ async function traerProyectos() {
 
 
 //Export module
-module.exports.traerProyectos = traerProyectos;
+export default {
+    traerProyectos
+}
