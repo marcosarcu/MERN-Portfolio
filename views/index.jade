@@ -1,6 +1,21 @@
+
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  pre #{JSON.stringify(projects, null, 2)}
+  .row
+    h2= title
+    p Welcome to #{title}
+
+  .row
+    if(projects.length)
+        each project in projects
+          article.col-md-6
+            .card
+              img(src=project.img, alt=project.name).card-img-top
+              .card-body
+                h3.card-title= project.name
+                p.card-text= project.description
+                a(href=project.link).btn.btn-primary Go to project
+    else
+      p No projects found
+          
