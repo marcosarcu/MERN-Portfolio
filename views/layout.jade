@@ -9,7 +9,11 @@ html
       header.container-md
         .row.align-items-center
           .col-md-6
-            h1 Marcos Arcusin
+            a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
+              img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
+              .logo 
+                h1 Marcos Arcusin
+                p Diseñador y desarrollador Full Stack
           .col-md-6
             nav
               ul.nav.justify-content-end
@@ -23,7 +27,26 @@ html
                   a.nav-link(href="/contact") Contact
       main.container-md
         block content
-      footer.container-md
-        .row.align-items-center
-          .col-md-12
-            p &copy; 2021 Marcos Arcusin     
+      footer.container-md.pt-5.pb-5
+        .row.align-items-center.justify-content-center
+          .col-md-4
+            a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
+              img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
+              .logo 
+                h1 Marcos Arcusin
+                p Diseñador y desarrollador Full Stack
+          .col-md-4.text-center
+            p Alumno: Marcos Aaron Arcusin
+            p Materia: Aplicaciones Hibridas
+            p Profesor: Brian Esteban Lara Campos
+          .col-md-4.text-center
+            ul.m-0.p-0.list-unstyled
+              li
+                a(href="https://www.facebook.com/marcos.arcusin", target="_blank").text-decoration-none
+                  img(src="/images/facebook.svg", alt="Facebook").social-icon
+              li
+                a(href="https://www.instagram.com/marcosarcusin/", target="_blank").text-decoration-none
+                  img(src="/images/instagram.svg", alt="Instagram").social-icon
+              li
+                a(href="https://www.linkedin.com/in/marcos-arcusin-5a4b3b1b9/", target="_blank").text-decoration-none
+                  img(src="/images/linkedin.svg", alt="Linkedin").social-icon

@@ -2,20 +2,34 @@
 extends layout
 
 block content
-  .row
-    h2= title
-    p Welcome to #{title}
+  .row.pt-5.pb-5.align-items-center
+    .col-md-6
+      h2= `Hola, soy ${title}`
+      p 
+        b Soy diseñador y desarrollador Web Full-Stack 
+        | con más de
+        b  3 años de experiencia 
+        | en aplicaciones web y móviles.
+      p Actualmente utilizo tecnologías como 
+        b NodeJS, Express, MongoDB, WordPress, PHP, Laravel, MySQL, HTML5, CSS3, Bootstrap, JavaScript, Git, GitHub, Netlify, Firebase,
+        |  entre otras.
+      .btn-container.d-flex.gap-2
+        a.btn.btn-outline-primary(href="#projects") Ver proyectos
+        a.btn.btn-primary(href="mailto:marcosarcu@gmail.com", target="_blank") Contactame
+    .col-md-6.order-first.order-md-last.d-flex
+      img(src="/images/hero.svg", alt="Ilustración de un desarrollador Web programando").hero-img
 
   .row
     if(projects.length)
-        each project in projects
-          article.col-md-6
-            .card
-              img(src=project.img, alt=project.name).card-img-top
-              .card-body
-                h3.card-title= project.name
-                p.card-text= project.description
-                a(href=project.link).btn.btn-primary Go to project
+      h2.mb-3 Proyectos
+      each project in projects
+        article.col-md-6
+          .card
+            img(src=project.img, alt=project.name).card-img-top
+            .card-body
+              h3.card-title= project.name
+              p.card-text= project.description
+              a(href=project.link).btn.btn-primary Ir al Proyecto
     else
-      p No projects found
+      p No se encontraron proyectos
           
