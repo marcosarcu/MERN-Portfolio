@@ -1,6 +1,9 @@
 extends layout
-
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+    if (error.status == 404)
+        h2 Error 404 
+        h3 Página no encontrada
+    else
+        h2 #{error.status || 'Undefined Error'}
+        p #{error.message}
+        pre #{error.stack}

@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .row
+        h2= title
+    .row
+        form(action="/admin/projects/nuevo", method="post")
+            .form-group.mb-3
+                label(for="name") Nombre
+                input.form-control(type="text", name="name", id="name")
+            .form-group.mb-3
+                label(for="description") Descripción
+                input.form-control(type="text", name="description", id="description")
+            .form-group.mb-3
+                label(for="link") Link
+                input.form-control(type="text", name="link", id="link")
+            .form-group.mb-3
+                label(for="img") Imagen
+                input.form-control(type="text", name="img", id="img")
+            .form-group.mb-3
+                .form-check
+                    label(for="public").form-check-label Publicar
+                    input.form-check-input(type="checkbox", name="public", id="public")
+            .form-group
+                button.btn.btn-primary(type="submit") Crear

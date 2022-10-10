@@ -10,8 +10,51 @@ async function traerProyectos() {
         });
     }
 
+async function traerProyectosPublicos() {
+    return client
+        .connect()
+        .then(async function () {
+        const db = client.db("AH_P1");
+        return db.collection("Projects").find({ public: true }).toArray();
+        });
+    }
 
-//Export module
+async function traerProyectoPorId(id) {
+    return client
+        .connect()
+        .then(async function () {
+        const db = client.db("AH_P1");
+        return db.collection("Projects").findOne({ _id: ObjectId(id) });
+        });
+    }
+
+async function guardarProyecto(project) {
+    return client
+        .connect()
+        .then(async function () {
+        const db = client.db("AH_P1");
+        return db.collection("Projects").insertOne(project);
+    });
+}
+
+async function eliminarProyecto(id) {
+    return client
+        .connect()
+        .then(async function () {
+        const db = client.db("AH_P1");
+        return db.collection("Projects").deleteOne({ _id: ObjectId(id) });
+    });
+}
+
+async function editarProyecto(id, project) {
+    return client
+        .connect()
+        .then(async function () {
+        const db = client.db("AH_P1");
+        return db.collection("Projects").updateOne({ _id: ObjectId(id) }, { $set: project });
+    });
+}
+
 export default {
-    traerProyectos
+    traerProyectos, traerProyectosPublicos, traerProyectoPorId, guardarProyecto, eliminarProyecto, editarProyecto
 }

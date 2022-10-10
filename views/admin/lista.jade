@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    .row
+        h2= title
+    .row
+        table.table 
+            thead
+                tr.align-items-center
+                    th(scope="col") Nombre
+                    th(scope="col") Descripción
+                    th(scope="col") Link
+                    th(scope="col") Imagen
+                    th(scope="col") Acciones
+            tbody
+                if(projects.length)
+                    each project in projects
+                        tr.align-items-center
+                            td= project.name
+                            td= project.description
+                            td= project.link
+                            td
+                                img(src=project.img, alt=project.name)
+                            td
+                                a.btn.btn-primary(href=`/admin/projects/${project._id}/editar`) Editar
+                                a.btn.btn-danger(href=`/admin/projects/${project._id}/eliminar`) Eliminar
+                                                                  
+                                form(action=`/admin/projects/${project._id}/publicar`, method="post")
+                                    if(project.public == true)
+                                        input(type="hidden", name="public", value="false")
+                                        button.btn.btn-warning(type="submit") Ocultar
+                                    else
+                                        input(type="hidden", name="public", value="true")
+                                        button.btn.btn-success(type="submit") Publicar
+                else
+                    tr 
+                        td No projects found
