@@ -1,6 +1,13 @@
 extends ../layout
 
 block content
-  .row
-    h2= title
+  .row.pt-5.pb-5.align-items-center
+    .col-md-6
+      h2= `Bienvenido al ${title}`
+      p A través de esta página podrás administrar los proyectos que se muestran en tu portfolio.
+      .btn-container.d-flex.gap-2
+        a.btn.btn-outline-primary(href="/") Volver al sitio
+        a.btn.btn-primary(href="/admin/projects") Administar proyectos
+    .col-md-6.order-first.order-md-last.d-flex
+      img(src="/images/admin.svg", alt="Ilustración de una persona administrando").hero-img
 

@@ -1,11 +1,12 @@
 extends ../layout
 
 block content
-    .row
+    .row.pt-5.pb-2
         h2= title
     .row
-        h3= `Estas seguro que quieres eliminar ${project.name}?`
-    .row
-        form(action=`/admin/projects/${project._id}/eliminar`, method="post")
-            button.btn.btn-danger(type="submit") Eliminar
+        p= `Estas seguro que quieres eliminar ${project.name}?`
+    .row.pb-5
+        .btn-container.d-flex.gap-2
+            form(action=`/admin/projects/${project._id}/eliminar`, method="post")
+                button.btn.btn-danger(type="submit") Eliminar
             a.btn.btn-primary(href=`/admin/projects/`) Cancelar

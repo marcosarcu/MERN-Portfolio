@@ -1,10 +1,12 @@
 extends ../layout
 
 block content
-    .row
+    .row.pt-5.pb-3
         h2= title
+        .wrapper
+            a.btn.btn-primary(href=`/admin/projects/nuevo`) Nuevo Proyecto
     .row
-        table.table.table-responsive-md 
+        table.table.table-responsive-md.table-hover.mb-5
             thead
                 tr.align-items-center
                     th(scope="col") Nombre
@@ -20,18 +22,19 @@ block content
                             td= project.description
                             td= project.link
                             td
-                                img(src=project.img, alt=project.name)
+                                img(src=project.img, alt=project.name).img-admin
                             td
-                                a.btn.btn-primary(href=`/admin/projects/${project._id}/editar`) Editar
-                                a.btn.btn-danger(href=`/admin/projects/${project._id}/eliminar`) Eliminar
+                                .btn-container.d-flex.gap-2
+                                    a.btn.btn-primary(href=`/admin/projects/${project._id}/editar`) Editar
+                                    a.btn.btn-danger(href=`/admin/projects/${project._id}/eliminar`) Eliminar
                                                                   
-                                form(action=`/admin/projects/${project._id}/publicar`, method="post")
-                                    if(project.public == true)
-                                        input(type="hidden", name="public", value="false")
-                                        button.btn.btn-warning(type="submit") Ocultar
-                                    else
-                                        input(type="hidden", name="public", value="true")
-                                        button.btn.btn-success(type="submit") Publicar
+                                    form(action=`/admin/projects/${project._id}/publicar`, method="post")
+                                        if(project.public == true)
+                                            input(type="hidden", name="public", value="false")
+                                            button.btn.btn-warning(type="submit") Ocultar
+                                        else
+                                            input(type="hidden", name="public", value="true")
+                                            button.btn.btn-success(type="submit") Publicar
                 else
                     tr 
                         td No projects found

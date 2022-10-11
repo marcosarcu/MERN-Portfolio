@@ -2,51 +2,58 @@ doctype html
 html
   head
     title= title
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css")
-    //- link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC", crossorigin="anonymous")
     body
-      header.container-md
-        .row.align-items-center
-          .col-md-6
-            a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
-              img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
-              .logo 
-                h1 Marcos Arcusin
-                p Diseñador y desarrollador Full Stack
-          .col-md-6
-            nav
-              ul.nav.justify-content-end
-                li.nav-item
-                  a.nav-link(href="/") Home
-                li.nav-item
-                  a.nav-link(href="/projects") Projects
-                li.nav-item
-                  a.nav-link(href="/about") About
-                li.nav-item
-                  a.nav-link(href="/contact") Contact
+      header.bg-light.pt-1.pb-1
+        .container-md
+          .row.align-items-center
+            .col-md-6
+              a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
+                img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
+                .logo 
+                  h1 Marcos Arcusin
+                  p Diseñador y desarrollador Full Stack
+            .col-md-6.d-none.d-md-block
+              nav
+                ul.nav.justify-content-end
+                  li.nav-item
+                    a.nav-link(href="/") Inicio
+                  li.nav-item
+                    a.nav-link(href="/#about") Sobre mí
+                  li.nav-item
+                    a.nav-link(href="/#projects") Proyectos
+                  li.nav-item
+                    a.nav-link(href="mailto:marcosarcu@gmail.com") Contacto
+                  li.nav-item 
+                    a.btn.btn-primary(href="/admin") Administar
       main.container-md
         block content
-      footer.container-md.pt-5.pb-5
-        .row.align-items-center.justify-content-center
-          .col-md-4
-            a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
-              img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
-              .logo 
-                h1 Marcos Arcusin
-                p Diseñador y desarrollador Full Stack
-          .col-md-4.text-center
-            p Alumno: Marcos Aaron Arcusin
-            p Materia: Aplicaciones Hibridas
-            p Profesor: Brian Esteban Lara Campos
-          .col-md-4.text-center
-            ul.m-0.p-0.list-unstyled
-              li
-                a(href="https://www.facebook.com/marcos.arcusin", target="_blank").text-decoration-none
-                  img(src="/images/facebook.svg", alt="Facebook").social-icon
-              li
-                a(href="https://www.instagram.com/marcosarcusin/", target="_blank").text-decoration-none
-                  img(src="/images/instagram.svg", alt="Instagram").social-icon
-              li
-                a(href="https://www.linkedin.com/in/marcos-arcusin-5a4b3b1b9/", target="_blank").text-decoration-none
-                  img(src="/images/linkedin.svg", alt="Linkedin").social-icon
+      footer.pt-5.pb-5.bg-light
+        .container-md
+          .row.align-items-center.justify-content-center
+            .col-md-12.justify-content-center.align-items-center.d-flex
+              a(href="/").d-flex.align-items-center.text-dark.text-decoration-none
+                img(src="/images/logo.png", alt="Marcos Arcusin").logoimg
+                .logo 
+                  h1 Marcos Arcusin
+                  p Diseñador y desarrollador Full Stack
+            .col-md-6.text-center
+              p Alumno: Marcos Aaron Arcusin
+              p Materia: Aplicaciones Hibridas
+              p Profesor: Brian Esteban Lara Campos
+            .col-md-6.text-center
+              h4 Redes Sociales
+              ul.m-0.p-0.list-unstyled.d-flex.align-items-center.justify-content-center
+                li
+                  a(href="https://www.facebook.com/marcos.arcusin", target="_blank").text-decoration-none
+                    img(src="/images/facebook.svg", alt="Facebook").social-icon
+                li
+                  a(href="https://www.instagram.com/marcosarcusin/", target="_blank").text-decoration-none
+                    img(src="/images/instagram.svg", alt="Instagram").social-icon
+                li
+                  a(href="https://www.linkedin.com/in/marcos-arcusin-46a1951a1/", target="_blank").text-decoration-none
+                    img(src="/images/linkedin.svg", alt="Linkedin").social-icon

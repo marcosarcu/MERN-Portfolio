@@ -19,7 +19,42 @@ block content
     .col-md-6.order-first.order-md-last.d-flex
       img(src="/images/hero.svg", alt="Ilustración de un desarrollador Web programando").hero-img
 
-  .row
+  .row.pt-5.pb-5.align-items-center#about
+    .col-md-6
+      h2 Acerca de mí
+      p Mi nombre es Marcos Arcusin, 
+        b comencé a introducirme al mundo del desarrollo web a los 18 años. 
+        | Desde ese momento, me he dedicado a aprender y mejorar mis habilidades en el desarrollo de aplicaciones web y móviles. 
+        b Mi mayor experiencia laboral es en el desarrollo de sitios web con WordPress.
+      p Durante los ultimos años me fui capacitando y adquiriendo nuevos conocimientos. Me considero una persona que sabe 
+        b trabajar en equipo, adaptarse a nuevas tecnologías 
+        | y soy capaz de
+        b  aprender de forma autodidacta. 
+        | Actualmente me encuentro 
+        b buscando empleo como desarrollador Full-Stack.
+    .col-md-6.order-first.d-flex
+      img(src="/images/about.jpg", alt="Una fotografía de Marcos Arcusin").hero-img.about-img
+
+
+  .row.pt-5.pb-5.align-items-center
+    .col-md-6
+      h2 Mis estudios
+      p En 2019 
+        b me recibí de Técnico en Multimedios. 
+        | Allí aprendí a utilizar programas como
+        b  Adobe Photoshop, Adobe Illustrator, Adobe Premiere. 
+        | Además, adquirí conocimientos de 
+        b diseño gráfico, edición de video y animación.
+      p Actualmente, estoy finalizando la carrera de 
+        b Dise­ño y Desarrollo Web
+        |  en la Escuela Da Vinci. 
+        | Durante la cursada, aprendí tecnologías como 
+        b HTML5, CSS3, JavaScript, Node, Express, Bootstrap, PHP, Laravel, MySQL, Git, GitHub,
+        | entre otras.
+    .col-md-6.order-first.order-md-last.d-flex
+      img(src="/images/study.svg", alt="Ilustración de un estudiante").hero-img
+
+  .row#projects.pt-5.pb-5
     if(projects.length)
       h2.mb-3 Proyectos
       each project in projects
