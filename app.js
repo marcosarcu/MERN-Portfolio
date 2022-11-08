@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index.js';
 import adminRouter from './routes/admin.js';
+import projectsApiRouter from './api/routes/projects.api.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,10 +25,13 @@ app.use(express.static(join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/', projectsApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  if (!(req.url.startsWith('/api'))) {
+    next(createError(404));
+  }
 });
 
 // error handler
