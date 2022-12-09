@@ -1,3 +1,4 @@
+import { ObjectID } from 'bson';
 import projectsServices from '../../services/projects.services.js';
 
 function findById(req, res) {
@@ -16,20 +17,35 @@ function findById(req, res) {
 }
 
 function editById(req, res) {
-    if(!(req.body.name && req.body.description && req.body.link && req.body.img && req.body.technologies)){
+    if(!(req.body.name && req.body.description && req.body.short_description && req.body.link && req.body.img && req.body.technologies)){
         res.status(400).json({ message: "Faltan datos" })
+        return;
     }
     const id = req.params.id;
-    const project = {};
+    const project = {
+        name: "",
+        short_description: "",
+        description: "",
+        link: "",
+        img: "",
+        public: false,
+        gallery: null,
+        technologies: []
+    };
 
     project.name = req.body.name;
+    project.short_description = req.body.short_description;
     project.description = req.body.description;
     project.link = req.body.link;
     project.img = req.body.img;
-    if (req.body.public) {
-        project.public = req.body.public;
+    project.public = req.body.public;
+    req.body.technologies.forEach(technology => {
+        project.technologies.push(ObjectID(technology));
+    });
+    
+    if(req.body.gallery){
+        project.gallery = ObjectID(req.body.gallery);
     }
-    project.technologies = req.body.technologies;
 
     projectsServices.editarProyecto(id, project)
         .then(function (project) {
@@ -60,17 +76,27 @@ function deleteById(req, res) {
 }
 
 function create(req, res) {
-    if(!(req.body.name && req.body.description && req.body.link && req.body.img && req.body.technologies)){
+    if(!(req.body.name && req.body.description && req.body.short_description && req.body.link && req.body.img && req.body.technologies)){
         res.status(400).json({ message: "Faltan datos" })
+        return;
     }
+    req.body.technologies.forEach(technology => {
+    const technologies = [];
+        technologies.push(ObjectID(technology));
+    });
     const project = {
         name: req.body.name,
         description: req.body.description,
+        short_description: req.body.short_description,
         link: req.body.link,
         img: req.body.img,
-        public: req.body.public,
-        technologies: req.body.technologies
+        technologies: technologies
     };
+    if (req.body.public) {
+        project.public = req.body.public;
+    } else {
+        project.public = false;
+    }
 
     projectsServices.guardarProyecto(project)
         .then(function (project) {
@@ -87,7 +113,7 @@ function create(req, res) {
 
 function findAll(req, res) {
 
-    if (req.body.onlyPublic == true) {
+    if (req.query.onlyPublic) {
         // traer solo los proyectos publicos
         projectsServices.traerProyectosPublicos()
             .then(function (projects) {

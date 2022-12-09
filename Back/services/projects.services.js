@@ -24,7 +24,13 @@ async function traerProyectos() {
                         foreignField: "_id",
                         as: "technologies"
                     }
+                },
+                {
+                    $project: {
+                        gallery: 0
+                    }
                 }
+
             ]).toArray();
         });
 }
@@ -47,6 +53,11 @@ async function traerProyectosPublicos() {
                 },
                 {
                     $match: { public: true }
+                },
+                {
+                    $project: {
+                        gallery: 0
+                    }
                 }
             ]).toArray();
         });
@@ -68,6 +79,11 @@ async function traerProyectoPorId(id) {
                 },
                 {
                     $match: { _id: ObjectId(id) }
+                },
+                {
+                    $project: {
+                        gallery: 0
+                    }
                 }
             ]).toArray()
         });
@@ -87,7 +103,10 @@ async function eliminarProyecto(id) {
         .connect()
         .then(async function () {
             const db = client.db("AH_P1");
-            return db.collection("Projects").deleteOne({ _id: ObjectId(id) });
+            const galleryId = await db.collection("Projects").findOne({ _id: ObjectId(id) }, { projection: { gallery: 1 } });
+            db.collection("Projects").deleteOne({ _id: ObjectId(id) });
+            // delete gallery
+            return db.collection("Galleries").deleteOne({ _id: ObjectId(galleryId.gallery) });            
         });
 }
 
@@ -116,6 +135,11 @@ async function traerProyectosPorTecnologia(id) {
                 },
                 {
                     $match: { technologies: { $elemMatch: { _id: ObjectId(id) } } }
+                },
+                {
+                    $project: {
+                        gallery: 0
+                    }
                 }
             ]).toArray();
         });
