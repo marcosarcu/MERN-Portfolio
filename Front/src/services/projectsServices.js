@@ -26,6 +26,7 @@ export async function create(project) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem('token'),
     },
     body: JSON.stringify(project),
   }).then((response) => {
@@ -38,6 +39,7 @@ export async function edit(id, project) {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      'auth-token': localStorage.getItem('token'),
     },
     body: JSON.stringify(project),
   }).then((response) => {
@@ -48,6 +50,9 @@ export async function edit(id, project) {
 export async function remove(id) {
   return fetch(`http://localhost:3000/api/projects/${id}`, {
     method: 'DELETE',
+    headers: {
+      'auth-token': localStorage.getItem('token'),
+    }
   }).then((response) => {
     return response;
   });

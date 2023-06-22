@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './header.css'
 
-export default function Header() {
+export default function Header({props}) {
+  function handleSubmit(e){
+    e.preventDefault();
+    props.handleLogOut();
+  }
+
+  let [authStatus, setAuthStatus] = useState(false)
+  useEffect(() =>{
+    setAuthStatus(props.isAuthenticated)
+  }, [props.isAuthenticated])
 
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,9 +37,27 @@ export default function Header() {
             <li className="nav-item">
               <a className="nav-link" href="mailto:marcosarcu@gmail.com">Contacto</a>
             </li>
+            {authStatus == true ? (
+              <>
+                <li className="nav-item">
+                <Link className="nav-link" to="/admin">Admin</Link>
+              </li>
+              <li className="nav-item">
+                <form action="" onSubmit={handleSubmit}>
+                  <button className='btn btn-primary ms-2' type="submit">Cerrar Sesión</button>
+                </form>
+              </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <Link className="btn btn-primary ms-2" to="/login">Iniciar Sesión</Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
     </header>
   )
+
+
 }

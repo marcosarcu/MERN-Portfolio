@@ -80,8 +80,8 @@ function create(req, res) {
         res.status(400).json({ message: "Faltan datos" })
         return;
     }
-    req.body.technologies.forEach(technology => {
     const technologies = [];
+    req.body.technologies.forEach(technology => {
         technologies.push(ObjectID(technology));
     });
     const project = {

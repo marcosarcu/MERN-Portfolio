@@ -7,3 +7,9 @@
 .navbar-collapse{
     flex-grow: 0;
 }
+
+@media screen and (max-width: 500px){
+    .logo p, .logo h1{
+        display: none;
+    }
+}

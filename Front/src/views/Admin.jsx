@@ -60,7 +60,7 @@ export default function Admin (){
                         <tr key={project._id}>
                             <td>{project.name}</td>
                             <td>{project.short_description}</td>
-                            <td>
+                            <td className='d-flex gap-2'>
                                 <Link to={`/admin/project/edit/${project._id}`} className="btn btn-primary">Editar</Link>
                                 <button className="btn btn-danger" onClick={() => handleDelete(project._id)}>Eliminar</button>
                             </td>

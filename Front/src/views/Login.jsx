@@ -15,11 +15,8 @@ export default function Login({onLogin}) {
                 type: 'success',
                 message: 'Sesión iniciada'
             })
-            setTimeout(() => {
-                window.history.back();
-            }
-            , 2000);
         }).catch((error) => {
+            console.log(error)
             setStatus({
                 type: 'danger',
                 message: 'Error al iniciar sesión'

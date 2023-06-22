@@ -13,3 +13,19 @@ export async function logIn(email, password){
         }
     })
 }
+
+export async function logOutService(){
+    return fetch('http://localhost:3000/api/users/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token'),
+        },
+    }).then((response) => {
+        if(response.ok){
+            return response
+        } else{
+            throw new Error('Error al cerrar sesión');
+        }
+    })
+}

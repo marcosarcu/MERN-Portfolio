@@ -13,7 +13,6 @@ export default function Projects() {
     return (
         <div className="container-md">
             <div className="row pt-5 pb-5">
-                <div className="col-md-12">
                     <h2>Proyectos</h2>
                     {projects.map((project, index) => {
                         return (
@@ -29,7 +28,6 @@ export default function Projects() {
                             </article>
                         )
                     })}
-                </div>
             </div>
         </div>
     )
